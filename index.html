@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aten | Personal Website</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#020617;
+  color:white;
+  overflow-x:hidden;
+}
+
+section{
+  padding:100px 8%;
+}
+
+/* ================= LOADER ================= */
+#loader{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#020617;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:9999;
+  animation:fadeOut 1s ease forwards;
+  animation-delay:2.5s;
+}
+
+.loader-content h1{
+  font-size:4rem;
+  background:linear-gradient(to right,#38bdf8,#6366f1);
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{opacity:.6}
+  50%{opacity:1}
+}
+
+@keyframes fadeOut{
+  to{opacity:0;visibility:hidden}
+}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  perspective:1200px;
+}
+
+.hero-wrapper{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:80px;
+  width:100%;
+  max-width:1200px;
+}
+
+.hero-content{
+  flex:1;
+  transition:.2s ease;
+}
+
+.hero-content h1{
+  font-size:4rem;
+  line-height:1.1;
+  background:linear-gradient(to right,#38bdf8,#6366f1);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero-content h2{
+  margin-top:20px;
+  font-size:1.3rem;
+  color:#94a3b8;
+}
+
+.profile-container{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  transition:.2s ease;
+}
+
+.profile-circle{
+  width:330px;
+  height:330px;
+  border-radius:50%;
+  overflow:hidden;
+  border:5px solid #38bdf8;
+  box-shadow:0 0 50px rgba(56,189,248,.6);
+}
+
+.profile-circle img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top center;
+}
+
+/* ================= ABOUT ================= */
+.about{
+  text-align:center;
+}
+
+.about h2{
+  font-size:2.5rem;
+  margin-bottom:30px;
+}
+
+.about p{
+  max-width:700px;
+  margin:auto;
+  color:#94a3b8;
+  line-height:1.8;
+}
+
+/* ================= SKILLS ================= */
+.skills h2{
+  text-align:center;
+  font-size:2.5rem;
+  margin-bottom:50px;
+}
+
+.skill-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:30px;
+}
+
+.skill-card{
+  background:rgba(255,255,255,.05);
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+  transition:.3s;
+}
+
+.skill-card:hover{
+  transform:translateY(-10px);
+  background:rgba(255,255,255,.08);
+}
+
+/* ================= ACHIEVEMENTS ================= */
+.achievements{
+  text-align:center;
+}
+
+.achievement-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+
+.achievement-card{
+  background:rgba(255,255,255,.05);
+  padding:40px;
+  border-radius:20px;
+  transition:.3s;
+}
+
+.achievement-card h3{
+  font-size:2.5rem;
+  color:#38bdf8;
+}
+
+/* ================= GALLERY ================= */
+.gallery h2{
+  text-align:center;
+  font-size:2.5rem;
+  margin-bottom:50px;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.gallery-item{
+  overflow:hidden;
+  border-radius:20px;
+}
+
+.gallery-item img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  transition:.4s;
+}
+
+.gallery-item img:hover{
+  transform:scale(1.1);
+}
+
+/* ================= CONTACT ================= */
+.contact{
+  text-align:center;
+}
+
+.contact h2{
+  font-size:2.5rem;
+  margin-bottom:40px;
+}
+
+.contact-icons{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+}
+
+.contact-icons a{
+  font-size:2rem;
+  color:white;
+  transition:.3s;
+}
+
+.contact-icons a:hover{
+  color:#38bdf8;
+  transform:scale(1.2);
+}
+
+/* ================= PARTICLES ================= */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  .hero-wrapper{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .hero-content h1{
+    font-size:2.5rem;
+  }
+
+  .profile-circle{
+    width:220px;
+    height:220px;
+  }
+
+  section{
+    padding:60px 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-content">
+    <h1>Hi there 👋🏻 </h1>
+  </div>
+</div>
+
+<canvas id="particles"></canvas>
+
+<section class="hero" id="hero">
+  <div class="hero-wrapper">
+    <div class="hero-content">
+      <h1>Fredsa Stanlye</h1>
+      <h2><span id="typing"></span></h2>
+    </div>
+    <div class="profile-container">
+      <div class="profile-circle">
+        <img src="Aten.png" alt="Aten">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <h2>About Me</h2>
+  <p>
+    I am a 4th semester university student passionate about technology,
+    innovation, and building impactful digital experiences.
+    I enjoy turning ideas into real projects and continuously improving my skills.
+  </p>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <div class="skill-grid">
+    <div class="skill-card">Web Development</div>
+    <div class="skill-card">UI/UX Design</div>
+    <div class="skill-card">Problem Solving</div>
+    <div class="skill-card">Public Speaking</div>
+  </div>
+</section>
+
+<section class="achievements">
+  <h2>Achievements</h2>
+  <div class="achievement-grid">
+    <div class="achievement-card">
+      <h3>20+</h3>
+      <p>Projects Completed</p>
+    </div>
+    <div class="achievement-card">
+      <h3>4th</h3>
+      <p>Semester Student</p>
+    </div>
+    <div class="achievement-card">
+      <h3>∞</h3>
+      <p>Ideas in Progress</p>
+    </div>
+    <div class="achievement-card">
+      <h3>🥇</h3>
+      <p>Gold Medal - National English Olympiad</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <h2>Projects & Achievements Gallery</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="project.jpeg"></div>
+    <div class="gallery-item"><img src="project 1.jpeg"></div>
+    <div class="gallery-item"><img src="Juara.jpeg"></div>
+    <div class="gallery-item"><img src="project2.jpeg"></div>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Contact Me</h2>
+  <div class="contact-icons">
+    <a href="https://wa.me/6285122004272" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/_pinocchioooooo/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="" target="_blank"><i class="fab fa-linkedin"></i></a>
+  </div>
+</section>
+
+<script>
+/* TYPING EFFECT */
+const text="Creative Developer | Lifelong Learner | Tech Enthusiast";
+let i=0;
+function typing(){
+  if(i<text.length){
+    document.getElementById("typing").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typing,60);
+  }
+}
+typing();
+
+/* 3D PARALLAX */
+const hero=document.getElementById("hero");
+const heroContent=document.querySelector(".hero-content");
+const profile=document.querySelector(".profile-container");
+
+hero.addEventListener("mousemove",(e)=>{
+  let x=(window.innerWidth/2-e.pageX)/30;
+  let y=(window.innerHeight/2-e.pageY)/30;
+  heroContent.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+  profile.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+});
+
+hero.addEventListener("mouseleave",()=>{
+  heroContent.style.transform="rotateY(0) rotateX(0)";
+  profile.style.transform="rotateY(0) rotateX(0)";
+});
+
+/* PARTICLES */
+/* PARTICLES */
+/* PARTICLES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+let particles = [];
+
+function createParticles() {
+  particles = [];
+  for (let i = 0; i < 120; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      dx: (Math.random() - 0.5) * 0.7,
+      dy: (Math.random() - 0.5) * 0.7
+    });
+  }
+}
+
+createParticles();
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = "#38bdf8";
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
